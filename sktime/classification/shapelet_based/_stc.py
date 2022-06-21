@@ -129,6 +129,7 @@ class ShapeletTransformClassifier(BaseClassifier):
         n_shapelet_samples=10000,
         max_shapelets=None,
         max_shapelet_length=None,
+        min_shapelet_length=3,
         estimator=None,
         transform_limit_in_minutes=0,
         time_limit_in_minutes=0,
@@ -141,6 +142,7 @@ class ShapeletTransformClassifier(BaseClassifier):
         self.n_shapelet_samples = n_shapelet_samples
         self.max_shapelets = max_shapelets
         self.max_shapelet_length = max_shapelet_length
+        self.min_shapelet_length = min_shapelet_length
         self.estimator = estimator
 
         self.transform_limit_in_minutes = transform_limit_in_minutes
@@ -198,6 +200,7 @@ class ShapeletTransformClassifier(BaseClassifier):
         self._transformer = RandomShapeletTransform(
             n_shapelet_samples=self.n_shapelet_samples,
             max_shapelets=self.max_shapelets,
+            min_shapelet_length=self.min_shapelet_length,
             max_shapelet_length=self.max_shapelet_length,
             time_limit_in_minutes=self._transform_limit_in_minutes,
             contract_max_n_shapelet_samples=self.contract_max_n_shapelet_samples,
